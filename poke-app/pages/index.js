@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 
 const Home = ({ launches }) => {
-  console.log('launches', launches)
+  // console.log('launches', launches)
   return (
     <div>
       <Head>
