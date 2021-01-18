@@ -1,8 +1,9 @@
 import Head from 'next/head';
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
+import { useAppContext } from '../src/context/state'
 
 const Home = ({ launches }) => {
-  // console.log('launches', launches)
+  console.log(useAppContext())
   return (
     <div>
       <Head>
