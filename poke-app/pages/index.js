@@ -3,7 +3,8 @@ import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import { useAppContext } from '../src/context/state'
 
 const Home = ({ launches }) => {
-  console.log(useAppContext())
+  const { state, dispatch } = useAppContext()
+  console.log('pokemons', state.pokemons)
   return (
     <div>
       <Head>
@@ -23,25 +24,26 @@ export async function getStaticProps() {
 
   const { data } = await client.query({
     query: gql`
-      query pokemons($limit: Int, $offset: Int){
-        pokemons(limit: $limit, offset: $offset){
-          count
-          next
-          previous
-          status
-          message
-          results {
-            url
-            name
-            image
+        query pokemons($limit: Int, $offset: Int){
+          pokemons(limit: $limit, offset: $offset){
+            count
+            next
+            previous
+            status
+            message
+            results {
+              url
+              name
+              image
+            }
           }
         }
-      }
-      `
+        `
   })
+
   return {
     props: {
-      launches: data.pokemons.results
+      launches: data
     }
   }
 }
