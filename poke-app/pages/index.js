@@ -1,16 +1,18 @@
 import Head from 'next/head';
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
+import ListComponent from '../components/ListComponent'
 import { useAppContext } from '../src/context/state'
 
 const Home = ({ launches }) => {
   const { state, dispatch } = useAppContext()
-  console.log('pokemons', state.pokemons)
+  console.log('pokemons', launches)
   return (
     <div>
       <Head>
         <title>Blog App</title>
       </Head>
       <h1>Blog</h1>
+      <ListComponent pokemons={launches} />
     </div>
   )
 }
