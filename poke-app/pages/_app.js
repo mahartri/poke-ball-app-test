@@ -7,8 +7,7 @@ import { AppWrapper } from '../context/state';
 
 const Layout = styled.div(() => ({
   maxWidth: '500px',
-  margin: 'auto'
-
+  margin: 'auto',
 }))
 
 function MyApp({ Component, pageProps }) {

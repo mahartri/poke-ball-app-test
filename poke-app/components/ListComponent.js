@@ -4,23 +4,34 @@ import styled from '@emotion/styled'
 
 const Container = styled.div(() => ({
     display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '1rem',
-    marginLeft: '2rem',
-    marginRight: '2rem'
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    gap: '5px',
+    // margin: 'auto',
+    // positon: 'relative',
+}))
+
+const Body = styled.div(() => ({
+    marginTop: '5rem',
+    marginBottom: '4rem',
+    marginLeft: '10px',
+    marginRight: 'auto',
 }))
 
 const Item = styled.div(() => ({
+    boxSizing: 'inherit',
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'space-between',
     textAlign: 'center',
     border: '1px #ccc solid',
     padding: '10px',
     maxHeight: '180px',
+    height: '90%',
+    maxWidth: '130px',
+    width: '90%',
     borderRadius: '10px',
     boxShadow: '1px 1px 2px #ccc',
-    borderColor: '#ee1515'
+    borderColor: '#ee1515',
 }))
 
 const PokemonName = styled.h5(() => ({
@@ -34,7 +45,7 @@ const ListComponent = ({ pokemons }) => {
     }
 
     return (
-        <div>
+        <Body>
             <Container>
                 {pokemons.map(pokemon => (
                     <Item
@@ -46,7 +57,7 @@ const ListComponent = ({ pokemons }) => {
                     </Item>
                 ))}
             </Container>
-        </div >
+        </Body >
     )
 }
 export default ListComponent;
