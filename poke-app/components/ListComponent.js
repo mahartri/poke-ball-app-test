@@ -1,13 +1,13 @@
 import React from 'react';
+import Link from "next/link"
 import styled from '@emotion/styled'
+import { useAppContext } from '../context/state'
 
 
 const Container = styled.div(() => ({
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
     gap: '5px',
-    // margin: 'auto',
-    // positon: 'relative',
 }))
 
 const Body = styled.div(() => ({
@@ -24,14 +24,14 @@ const Item = styled.div(() => ({
     justifyContent: 'space-between',
     textAlign: 'center',
     border: '1px #ccc solid',
-    padding: '10px',
-    maxHeight: '180px',
-    height: '90%',
+    maxHeight: '60px',
+    height: '100%',
     maxWidth: '130px',
     width: '90%',
     borderRadius: '10px',
-    boxShadow: '1px 1px 2px #ccc',
+    boxShadow: '1px 1px 5px #ccc',
     borderColor: '#ee1515',
+    marginBottom: '1rem'
 }))
 
 const PokemonName = styled.h5(() => ({
@@ -39,22 +39,38 @@ const PokemonName = styled.h5(() => ({
     justifyContent: 'space-between',
 }))
 
+const Text = styled.h4(() => ({
+    top: '5px',
+    marginBottom: '2rem',
+    width: '100%',
+    height: '2rem',
+}))
+
+const UpperComponent = styled.div(() => ({
+    height: '2rem',
+    marginBottom: '4px'
+}))
+
 const ListComponent = ({ pokemons }) => {
-    console.log(pokemons)
-    const handleClickItem = (e) => {
-    }
+    const { state } = useAppContext()
 
     return (
         <Body>
+            <UpperComponent>
+                <Text>Total owned: {state.totalOwned}</Text>
+            </UpperComponent>
             <Container>
-                {pokemons.map(pokemon => (
-                    <Item
-                        onclick={e => handleClickItem(e, pokemon.id)}
-                    >
-                        <img src={pokemon.image} alt="" />
-                        <PokemonName>{pokemon.name}</PokemonName>
-                        <p></p>
-                    </Item>
+                {pokemons.map((pokemon, index) => (
+                    <Link href={{
+                        pathname: "/pokemonDetail",
+                        query: { pokemonName: pokemon.name, pokemonImage: pokemon.image }
+                    }}>
+                        <Item>
+
+                            <PokemonName>{pokemon.name}</PokemonName>
+                            <p></p>
+                        </Item>
+                    </Link>
                 ))}
             </Container>
         </Body >

@@ -9,7 +9,6 @@ import styled from '@emotion/styled'
 
 
 
-
 const Home = ({ pokemon }) => {
   const { dispatch } = useAppContext()
   useEffect(() => {
@@ -21,7 +20,8 @@ const Home = ({ pokemon }) => {
       <Head>
         <title>Poke App</title>
       </Head>
-      <HeaderComponent headerText={'Poke App'} />
+      <HeaderComponent headerText={'List Pokemons'} />
+
       <ListComponent pokemons={pokemon.pokemons.results} />
       <FooterComponent />
     </div>
